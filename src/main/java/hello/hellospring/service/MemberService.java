@@ -3,12 +3,15 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 //참고: Cmd + Shift + T 하면 테스트 만들어줌
 //회원 서비스
+@Service
 public class MemberService {
     //기존에는 회원 서비스가 메모리 회원 리포지토리를 직접 생성한다.
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -16,6 +19,7 @@ public class MemberService {
     //회원 리포지토리 코드가 회원 서비스 코드를 DI 가능하게 변경한다. Dependency Injection
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
